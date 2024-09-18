@@ -1,0 +1,11 @@
+version: v2beta1
+
+images:
+  app:
+    image: ${REGISTRY}/${IMAGE_REPO}
+    tags: ["${TAG}"]
+    context: ./
+    buildKit:
+      args: ["--platform", "linux/amd64,linux/arm64"]
+    buildArgs:
+      TAG: ${TAG}
