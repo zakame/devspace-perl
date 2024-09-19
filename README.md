@@ -1,25 +1,26 @@
 # devspace-perl
 
-This is a Perl container image meant to be used for [devspace][0].
+This repo builds a Perl container image meant to be used for [devspace][0].
 
 [0]: https://devspace.sh
-
-Feel free to fork this repo and make customizations especially on 
-`Dockerfile` to install/configure your application's dependencies
-as needed!
 
 ### Quick Start
 
 - Run `devspace init` on your Perl project
 
 - Edit `devspace.yaml` so it uses this image for your `dev` 
-  container:
+  container, and add a custom `start` command:
 
 ```yaml
 dev:
-  replacePods:
-  - imageSelector: ${IMAGE}
-    replaceImage: ghcr.io/zakame/devspace-perl:master
+  app:
+    imageSelector: my-image-registry.tld/username/app
+    devImage: ghcr.io/zakame/devspace-perl:5.40-slim-bookworm
+
+commands:
+  start:
+    command: |-
+      devspace enter -- bash -c 'morbo ./path/to/app -l http://0.0.0.0:3000'
 ```
 
 - Edit `devspace_start.sh` to set up your `dev` container:
@@ -32,7 +33,7 @@ echo "Installing Carton snapshot support for cpm"
 cpm install -g Carton
 
 echo "Installing cpanfile dependencies"
-cpm install
+cpm install -g
 ```
 
 - Run `devspace dev` and hack away!
@@ -40,4 +41,6 @@ cpm install
 
 ### See Also
 
-- https://devspace.sh/docs/5.x/introduction
+- [Available image versions](https://github.com/zakame/devspace-perl/pkgs/container/devspace-perl/versions)
+- [Templates of app devspace config and start script](./template)
+- [devspace introduction](https://devspace.sh/docs/getting-started/introduction)
