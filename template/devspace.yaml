@@ -1,0 +1,6 @@
+version: v2beta1
+
+commands:
+  start:
+    command: |-
+      devspace enter -- bash -c 'morbo ./path/to/app -l http://0.0.0.0:3000'
