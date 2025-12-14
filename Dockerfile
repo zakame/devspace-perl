@@ -17,7 +17,8 @@ RUN <<EOT bash -euo pipefail
         wget \
         git \
         openssl \
-        procps
+        procps \
+        jq
 
     curl -sL https://deb.nodesource.com/setup_lts.x -o nodesource_setup.sh
     bash nodesource_setup.sh
@@ -50,8 +51,11 @@ RUN <<EOT bash -euo pipefail
 
     devspace add plugin https://github.com/loft-sh/loft-devspace-plugin
 
-    curl -fsSL -o loft "https://github.com/loft-sh/loft/releases/latest/download/loft-linux-\$ARCH_SHORT"
-    chmod +x loft
+    LOFT_URL=\$(curl -fsSL https://api.github.com/repos/loft-sh/loft/releases/latest \
+        | jq --arg arch \${ARCH_SHORT}.tar.gz -r \
+        '.assets[] | select(.name | test(\$arch)) | .browser_download_url')
+    curl -fsSL -o loft.tar.gz \$LOFT_URL
+    tar xzf loft.tar.gz loft
     install -p loft /usr/local/bin;
-    rm loft
+    rm loft.tar.gz
 EOT
