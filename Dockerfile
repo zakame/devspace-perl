@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.4
-ARG TAG=5.40-slim-bookworm
+ARG TAG=5.42-slim-bookworm
 FROM perl:${TAG}
 
 WORKDIR /app
