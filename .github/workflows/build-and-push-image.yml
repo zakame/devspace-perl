@@ -17,9 +17,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - tag: 5.42-slim-bookworm
           - tag: 5.40-slim-bookworm
           - tag: 5.38-slim-bookworm
-          - tag: 5.36-slim-bookworm
     permissions:
       contents: read
       packages: write
