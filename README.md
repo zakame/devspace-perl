@@ -15,7 +15,7 @@ This repo builds a Perl container image meant to be used for [devspace][0].
 dev:
   app:
     imageSelector: my-image-registry.tld/username/app
-    devImage: ghcr.io/zakame/devspace-perl:5.42-slim-bookworm
+    devImage: ghcr.io/zakame/devspace-perl:5.44-slim-bookworm
 
 commands:
   start:
@@ -37,6 +37,9 @@ cpm install -g
 ```
 
 - Run `devspace dev` and hack away!
+
+The workflow currently publishes `5.44-slim-bookworm`,
+`5.42-slim-bookworm`, and `5.40-slim-bookworm` tags.
 
 
 ### See Also
