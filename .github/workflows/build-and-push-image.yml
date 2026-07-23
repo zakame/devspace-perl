@@ -18,8 +18,11 @@ jobs:
       matrix:
         include:
           - tag: 5.44-slim-bookworm
+          - tag: 5.44-slim-trixie
           - tag: 5.42-slim-bookworm
+          - tag: 5.42-slim-trixie
           - tag: 5.40-slim-bookworm
+          - tag: 5.40-slim-trixie
     permissions:
       contents: read
       packages: write
