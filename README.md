@@ -38,8 +38,9 @@ cpm install -g
 
 - Run `devspace dev` and hack away!
 
-The workflow currently publishes `5.44-slim-bookworm`,
-`5.42-slim-bookworm`, and `5.40-slim-bookworm` tags.
+The workflow currently publishes `5.44-slim-bookworm`, `5.44-slim-trixie`,
+`5.42-slim-bookworm`, `5.42-slim-trixie`, `5.40-slim-bookworm`, and
+`5.40-slim-trixie` tags.
 
 
 ### See Also
